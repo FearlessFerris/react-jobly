@@ -1,0 +1,6 @@
+Design Hierarchy of Jobly Application 
+
+
+App 
+  - Main Application Wrapper 
+  - No Props 

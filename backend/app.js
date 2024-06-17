@@ -28,6 +28,16 @@ app.use("/users", usersRoutes);
 app.use("/jobs", jobsRoutes);
 
 
+// Application Homepage 
+app.get( '/', function( req, res, next ) {
+  try{
+    return res.json({ message: 'Welcome to Jobly Homepage!!!' });
+  }
+  catch( error ){
+    return next( error );
+  }
+});
+
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
   return next(new NotFoundError());

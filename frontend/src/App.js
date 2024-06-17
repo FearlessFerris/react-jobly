@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// Application Component Implementation 
 
+
+// Dependencies 
+import React, { useState, useEffect } from 'react';
+
+
+// Components & Necessary Files 
+import Company from './routes/Company';
+
+
+// Main Application 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  
+  return( 
+      <div
+          className = 'app-container'
+      >
+        <h1> Jobly Application </h1>
+
+      <Company />       
+      </div>
+  )
 }
 
 export default App;

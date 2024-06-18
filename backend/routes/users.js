@@ -44,6 +44,32 @@ router.post("/", ensureAdmin, async function (req, res, next) {
 });
 
 
+/* 
+  Create User Login Functionality 
+
+*/
+
+router.post('/login', async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.authenticate(username, password);
+
+    if (!user) {
+      // If authentication fails (user is null), return a 401 Unauthorized response
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+
+    const token = createToken(user);
+    const isAdmin = user.isAdmin;
+
+    return res.json({ token, isAdmin });
+  } catch (error) {
+    // Catch any unexpected errors and pass them to the error handler middleware
+    return next(new BadRequestError('Invalid username / password'));
+  }
+});
+
+
 /** GET / => { users: [ {username, firstName, lastName, email }, ... ] }
  *
  * Returns list of all users.

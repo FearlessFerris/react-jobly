@@ -36,8 +36,46 @@ class JoblyApi {
 
   // Individual API routes
 
+  // User Methods 
+
+
+  static async getUserInfo() {
+    try {
+      const response = await JoblyApi.request(`auth/token`); // Assuming this endpoint provides user info
+      const { isAdmin } = response.data;
+      return isAdmin;
+    } catch (err) {
+      console.error('Error fetching user info:', err);
+      throw err;
+    }
+  }
+  
+  static async login( formData ) {
+    try{
+      const response = await axios.post( `${ BASE_URL }/auth/token`, formData );
+      const token = response.data.token;
+      const isAdmin = response.data.isAdmin;
+      console.log( isAdmin );
+      console.log( response );
+      return { token, isAdmin };
+    }
+    catch( error ){
+      console.error( error );
+    }
+  }
+
+  static async createUser(userData) {
+    try {
+      const response = await axios.post(`${ BASE_URL }/auth/register`, userData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   /** Get details on a company by handle. */
 
+  // Company Methods
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
@@ -48,6 +86,21 @@ class JoblyApi {
     return res.companies;
   }
 
+  // Job Methods 
+  static async getJobs() {
+    let res = await this.request(`jobs/`);
+    return res.jobs;
+  }
+
+  static async createJob(data) {
+    let res = await this.request(`jobs/`, data, "post");
+    return res.job;
+  }
+
+  static async deleteJob(id) {
+    let res = await this.request(`jobs/${id}`, {}, "delete");
+    return res.deleted;
+  }
   // obviously, you'll add a lot here ...
 }
 

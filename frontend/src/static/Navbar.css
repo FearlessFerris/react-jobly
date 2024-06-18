@@ -1,0 +1,6 @@
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+    width: 100%;
+}

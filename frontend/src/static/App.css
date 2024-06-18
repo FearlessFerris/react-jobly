@@ -1,0 +1,11 @@
+body {
+    background-color: #263238;
+}
+
+.app-container {
+    align-items: center;
+    background-color: #263238;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

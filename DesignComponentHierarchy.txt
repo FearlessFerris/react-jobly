@@ -1,0 +1,21 @@
+Design Hierarchy of Jobly Application 
+
+
+App 
+  - Main Application Wrapper 
+  - Store User Authorization Token ( Other User Information )
+
+User  
+  - Handle User Authorization 
+  - Handle User Login / Logout 
+  - Handle GET / POST / PUT / DELETE of User Information 
+
+Job 
+  - Handle Job GET / POST / PUT / DELETE 
+
+Company 
+  - Handle Company GET / POST / PUT / DELETE 
+
+Application 
+  - Handle a users Applications GET / POST / PUT DELETE 
+
